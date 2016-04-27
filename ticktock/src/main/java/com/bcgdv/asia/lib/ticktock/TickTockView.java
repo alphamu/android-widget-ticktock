@@ -252,6 +252,9 @@ public class TickTockView extends View {
         }
     }
 
+    /**
+     * Remove stop the timer.
+     */
     public void stop() {
         if (mTimer != null) {
             mTimer.cancel();
@@ -282,7 +285,7 @@ public class TickTockView extends View {
     /**
      * Listen for tick events.
      *
-     * @param l
+     * @param l OnTickListener
      */
     public void setOnTickListener(OnTickListener l) {
         mTickListener = l;
