@@ -10,5 +10,6 @@
         <attr name="tickMiddleColor" format="color" />
         <attr name="tickText" format="string" />
         <attr name="tickMoveCounterClockwise" format="boolean" />
+        <attr name="tickAutoFitText" format="boolean" />
     </declare-styleable>
 </resources>

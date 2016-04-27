@@ -23,8 +23,12 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
         app:tickMiddleColor="#333333"
         app:tickMoveCounterClockwise="true"
         app:tickTextColor="#CCCCCC"
-        android:layout_gravity="center_horizontal"/>
+        app:tickDotRadius="6dp"
+        app:tickEmptyRingColor="@android:color/white"
+        app:tickFillRingColor="@color/colorPrimary"
+        app:tickRingThickness="3dp" />
 </LinearLayout>

@@ -53,6 +53,7 @@ public class TickTockView extends View {
     private float mTextSize = 80;
 
     private boolean mCounterClockwise = false;
+    private boolean mAutoFitText = true;
 
 
     private OnTickListener mTickListener;
@@ -98,6 +99,7 @@ public class TickTockView extends View {
             mTextSize = ta.getDimension(R.styleable.TickTockView_tickTextSize, mTextSize);
 
             mText = ta.getText(R.styleable.TickTockView_tickText);
+            mAutoFitText = ta.getBoolean(R.styleable.TickTockView_tickAutoFitText, mAutoFitText);
 
             mCounterClockwise = ta.getBoolean(R.styleable.TickTockView_tickMoveCounterClockwise, mCounterClockwise);
 
@@ -260,9 +262,11 @@ public class TickTockView extends View {
         if (TextUtils.isEmpty(text)) {
             return;
         }
-        float textWidth = mFillPaint.measureText(text.toString());
-        float multi = ((mRingRadius * 2) - mTextPadding * 2) / textWidth;
-        mTextPaint.setTextSize(mFillPaint.getTextSize() * multi);
+        if (mAutoFitText) {
+            float textWidth = mFillPaint.measureText(text.toString());
+            float multi = ((mRingRadius * 2) - mTextPadding * 2) / textWidth;
+            mTextPaint.setTextSize(mFillPaint.getTextSize() * multi);
+        }
         mTextPaint.getTextBounds(mText.toString(), 0, mText.length(), mTextBounds);
     }
 
