@@ -55,8 +55,13 @@ public class TickTockView extends View {
     private boolean mCounterClockwise = false;
     private boolean mAutoFitText = true;
 
-
     private OnTickListener mTickListener;
+
+    private final int DURATION_MINUTE = 0;
+    private final int DURATION_TOTAL = 1;
+    private int mCircleDuration = DURATION_MINUTE;
+    private Calendar mStartTime = null;
+    private Calendar mEndTime = null;
 
     public TickTockView(Context context) {
         super(context);
@@ -102,7 +107,7 @@ public class TickTockView extends View {
             mAutoFitText = ta.getBoolean(R.styleable.TickTockView_tickAutoFitText, mAutoFitText);
 
             mCounterClockwise = ta.getBoolean(R.styleable.TickTockView_tickMoveCounterClockwise, mCounterClockwise);
-
+            mCircleDuration = ta.getInt(R.styleable.TickTockView_tickCircleDuration, mCircleDuration);
         } finally {
             ta.recycle();
         }
@@ -184,8 +189,15 @@ public class TickTockView extends View {
         calculateArc();
         long ms = isInEditMode() ? System.currentTimeMillis() % 60000 : mTimeRemaining % 60000;
         float angle = (float) (ms * 0.006);
+
+        if (mCircleDuration == DURATION_TOTAL && mStartTime != null) {
+            long totalTime = mEndTime.getTimeInMillis() - mStartTime.getTimeInMillis();
+            float percentage = (((float) mTimeRemaining) / ((float) totalTime));
+            angle = 360f * percentage;
+        }
+
         if (isInEditMode()) {
-           angle *= -1;
+            angle *= -1;
         }
 
         //The fill
@@ -221,13 +233,21 @@ public class TickTockView extends View {
         mCanvas.drawCircle(centerX, centerY, mDotRadius, mFillPaint);
     }
 
+    /**
+     *
+     * @param endTime Calendar the time to count down till.
+     */
     public void start(Calendar endTime) {
         if (endTime == null || endTime.before(Calendar.getInstance())) {
             throw new IllegalArgumentException("endTime cannot be null and must be in the future");
         }
+
+        mEndTime = endTime;
+
         if (mTimer != null) {
             mTimer.cancel();
         }
+
         mTimer = new CountDownTimer(endTime.getTimeInMillis() - System.currentTimeMillis(), 16) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -238,9 +258,24 @@ public class TickTockView extends View {
 
             @Override
             public void onFinish() {
-
+                updateText(0);
+                invalidate();
             }
         }.start();
+    }
+
+    /**
+     * Only for use with with tickCircleDuration = total_time
+     *
+     * @param startTime Calendar the start time which represents starting point for the circle.
+     * @param endTime Calendar the end time which represents a full circle
+     */
+    public void start(Calendar startTime, Calendar endTime) {
+        if (startTime == null || endTime == null || startTime.after(endTime)) {
+            throw new IllegalArgumentException("startTime and endTime cannot be null and startTime must be before endTIme.");
+        }
+        mStartTime = startTime;
+        start(endTime);
     }
 
     private void updateText(long timeRemaining) {
@@ -259,6 +294,8 @@ public class TickTockView extends View {
         if (mTimer != null) {
             mTimer.cancel();
         }
+        mStartTime = null;
+        mEndTime = null;
     }
 
     private void fitText(CharSequence text) {

@@ -16,6 +16,7 @@
         android:id="@+id/view_ticktock_countdown"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        app:tickCircleDuration="total_time"
         android:layout_gravity="center_horizontal" />
 
     <com.bcgdv.asia.lib.ticktock.TickTockView
