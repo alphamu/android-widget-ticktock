@@ -6,7 +6,7 @@ This is a circular widget that can be used to display a count down timer or a co
 
 ## How to include
 
-   TODO
+   compile 'com.bcgdv.asia.lib:ticktock:1.0'
 
 ## Usage
 

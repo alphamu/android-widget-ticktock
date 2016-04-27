@@ -1,1 +1,1 @@
-include ':app', ':ticktocklib'
+include ':app', ':ticktock'
