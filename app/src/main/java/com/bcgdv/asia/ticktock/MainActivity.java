@@ -56,11 +56,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.DAY_OF_MONTH, 1);
-        c.add(Calendar.SECOND, 5);
+        Calendar end = Calendar.getInstance();
+        end.add(Calendar.MINUTE, 4);
+        end.add(Calendar.SECOND, 5);
+
+        Calendar start = Calendar.getInstance();
+        start.add(Calendar.MINUTE, -1);
         if (mCountDown != null) {
-            mCountDown.start(c);
+            mCountDown.start(start, end);
         }
 
         Calendar c2= Calendar.getInstance();

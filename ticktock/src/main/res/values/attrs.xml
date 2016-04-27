@@ -11,5 +11,9 @@
         <attr name="tickText" format="string" />
         <attr name="tickMoveCounterClockwise" format="boolean" />
         <attr name="tickAutoFitText" format="boolean" />
+        <attr name="tickCircleDuration" format="enum">
+            <enum name="minute" value="0"/>
+            <enum name="total_time" value="1" />
+        </attr>
     </declare-styleable>
 </resources>
