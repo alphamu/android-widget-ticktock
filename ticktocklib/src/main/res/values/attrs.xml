@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TickTockView">
+        <attr name="tickTextSize" format="dimension" />
+        <attr name="tickRingThickness" format="dimension" />
+        <attr name="tickDotRadius" format="dimension" />
+        <attr name="tickTextColor" format="color" />
+        <attr name="tickEmptyRingColor" format="color" />
+        <attr name="tickFillRingColor" format="color" />
+        <attr name="tickMiddleColor" format="color" />
+        <attr name="tickText" format="string" />
+        <attr name="tickMoveCounterClockwise" format="boolean" />
+    </declare-styleable>
+</resources>
