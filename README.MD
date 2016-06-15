@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/BCGDV-ASIA/android-widget-ticktock.svg?branch=master)](https://travis-ci.org/BCGDV-ASIA/android-widget-ticktock) 
+[![Download](https://api.bintray.com/packages/bcgdv/android/ticktock/images/download.svg)](https://bintray.com/bcgdv/android/ticktock/_latestVersion) 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TickTock%20Widget-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3556) 
+
 # TickTock Widget
 
 This is a circular widget that can be used to display a count down timer or a count up timer.
