@@ -242,6 +242,12 @@ public class TickTockView extends View {
             throw new IllegalArgumentException("endTime cannot be null and must be in the future");
         }
 
+        //Fix for issue #1 where hot deploying would result in text being rendered incorrectly.
+        if (!TextUtils.isEmpty(mText) && (mTextBounds.width() == 0 || mTextBounds.height() == 0) && mTextSize > 0) {
+            //When code is hot deployed,
+            fitText(mText);
+        }
+
         mEndTime = endTime;
 
         if (mTimer != null) {

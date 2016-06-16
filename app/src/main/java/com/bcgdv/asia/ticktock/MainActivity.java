@@ -3,6 +3,7 @@ package com.bcgdv.asia.ticktock;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.bcgdv.asia.lib.ticktock.TickTockView;
 
@@ -13,11 +14,14 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private TickTockView mCountDown = null;
     private TickTockView mCountUp = null;
+    private TextView mTxtHeadline = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mTxtHeadline = (TextView) findViewById(R.id.txt_headline);
+        mTxtHeadline.setText("Hello World2");
         mCountDown = (TickTockView) findViewById(R.id.view_ticktock_countdown);
         mCountUp = (TickTockView) findViewById(R.id.view_ticktock_countup);
         if (mCountDown != null) {

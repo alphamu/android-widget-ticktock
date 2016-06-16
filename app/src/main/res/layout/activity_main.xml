@@ -12,6 +12,14 @@
     android:background="#CCCCCC"
     tools:context="com.bcgdv.asia.ticktock.MainActivity">
 
+    <TextView
+        android:id="@+id/txt_headline"
+        style="@style/Base.TextAppearance.AppCompat.Headline"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TickTock Widget"/>
+
     <com.bcgdv.asia.lib.ticktock.TickTockView
         android:id="@+id/view_ticktock_countdown"
         android:layout_width="200dp"
