@@ -135,6 +135,7 @@ public class TickTockView extends View {
     private void calculateEverything() {
         calculateCenter();
         calculateArc();
+        System.out.println("calculated everything");
     }
 
     private void drawInitialCircle() {
