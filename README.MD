@@ -11,7 +11,7 @@ This is a circular widget that can be used to display a count down timer or a co
 ## How to include
 
 ```groovy
-compile 'com.bcgdv.asia.lib:ticktock:1.2'
+compile 'com.bcgdv.asia.lib:ticktock:1.3'
 ```
 
 ## Usage

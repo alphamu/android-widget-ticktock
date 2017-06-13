@@ -288,6 +288,9 @@ public class TickTockView extends View {
         if (mTickListener != null) {
             String text = mTickListener.getText(timeRemaining);
             if (!TextUtils.isEmpty(text)) {
+                if (mText != null && mText.length() != text.length()) {
+                    mTextPaint.getTextBounds(text, 0, text.length(), mTextBounds);
+                }
                 mText = text;
             }
         }
