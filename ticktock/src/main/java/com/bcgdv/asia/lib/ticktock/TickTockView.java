@@ -284,6 +284,24 @@ public class TickTockView extends View {
         start(endTime);
     }
 
+
+
+
+    public void start(Calendar start , int endSeconds)
+    {
+
+        Calendar end = Calendar.getInstance();
+
+
+        end.add(Calendar.SECOND, endSeconds);
+        mStartTime = start;
+        start(end);
+
+
+
+
+    }
+
     private void updateText(long timeRemaining) {
         if (mTickListener != null) {
             String text = mTickListener.getText(timeRemaining);
