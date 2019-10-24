@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bcgdv.asia.lib.ticktock.TickTockView;
 
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
             mCountDown.setOnTickListener(new TickTockView.OnTickListener() {
                 @Override
                 public String getText(long timeRemaining) {
+
+                    if(timeRemaining == 0.0)
+                    {
+                        Toast.makeText(getApplicationContext(),"finished",Toast.LENGTH_LONG).show();
+                    }
+
                     int seconds = (int) (timeRemaining / 1000) % 60;
                     int minutes = (int) ((timeRemaining / (1000 * 60)) % 60);
                     int hours = (int) ((timeRemaining / (1000 * 60 * 60)) % 24);
@@ -50,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 Date date = new Date();
                 @Override
                 public String getText(long timeRemaining) {
+
+                    if(timeRemaining == 0.0)
+                    {
+                        Toast.makeText(getApplicationContext(),"finished1",Toast.LENGTH_LONG).show();
+                    }
+
                     date.setTime(System.currentTimeMillis());
                     return format.format(date);
                 }
@@ -61,22 +74,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Calendar end = Calendar.getInstance();
-        end.add(Calendar.MINUTE, 4);
+//        end.add(Calendar.MINUTE, 4);
         end.add(Calendar.SECOND, 5);
 
         Calendar start = Calendar.getInstance();
-        start.add(Calendar.MINUTE, -1);
+        start.add(Calendar.SECOND, 3);
         if (mCountDown != null) {
             mCountDown.start(start, end);
         }
 
         Calendar c2= Calendar.getInstance();
-        c2.add(Calendar.HOUR, 2);
-        c2.set(Calendar.MINUTE, 0);
-        c2.set(Calendar.SECOND, 0);
-        c2.set(Calendar.MILLISECOND, 0);
+        c2.add(Calendar.SECOND, 30);
+
+        Calendar start1 = Calendar.getInstance();
+        start.add(Calendar.SECOND, 3);
+
         if (mCountUp != null) {
-            mCountUp.start(c2);
+            mCountUp.start(start1,40);
         }
     }
 
